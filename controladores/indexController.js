@@ -1,6 +1,5 @@
 //Requires
-
-
+const index = require('../db/index')
 
 //Metodos
 const indexController={
