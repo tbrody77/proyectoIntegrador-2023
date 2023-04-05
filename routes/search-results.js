@@ -3,7 +3,10 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.render('search-results', { title: 'Search Results' });
 });
 
 module.exports = router;
+
+//se cambio de users a profile
+

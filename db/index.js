@@ -1,56 +1,55 @@
 const data = { 
     productos: [
     {
-        nombreProducto: "Air Force 1",imagen: "/images/airforce1.jpeg" ,
+        nombre: "Air Force 1",imagen: "/../public/images/airforce1.jpeg" ,
         descripcion: "Nike",fechaCarga: "03/04/2023",
         alt:"Zapatilla",comentario: "Muy comodas"
     },
     {
-        nombreProducto: "Forum Bad Bunny",descripcion: "Adidas",
+        nombre: "Forum Bad Bunny",descripcion: "Adidas",
         fechaCarga:"03/04/2023",alt: "Zapatilla",
-        comentario: "Hermosas",imagen:"/images/BBforum.jpeg",
+        comentario: "Hermosas",imagen:"/../public/images/BBforum.jpeg",
     },
     {
-        nombreProducto: "Jordan 1 Mocha",descripcion: "Nike",
+        nombre: "Jordan 1 Mocha",descripcion: "Nike",
         fechaCarga:"03/04/2023",alt: "Zapatilla",
-        comentario: "Tremendas",imagen:"/images/JordanMocha.jpeg",
+        comentario: "Tremendas",imagen:"/../public/images/JordanMocha.jpeg",
         
     },
     {
         nombre: "220",descripcion: "NewBalance",
         fechaCarga:"03/04/2023",alt: "Zapatilla",
-        comentario: "Combinan muy bien",imagen:"/images/newBalance2002.jpeg",
+        comentario: "Combinan muy bien",imagen:"/../public/images/newBalance2002.jpeg",
     },
     {   nombre: "Dunk Low Panda",descripcion: "Nike",
         fechaCarga:"03/04/2023",alt: "Zapatilla",
-        comentario: "Muy quemadas",imagen:"/images/panda.jpeg",
+        comentario: "Muy quemadas",imagen:"/../public/images/panda.jpeg",
         },
     {    nombre: "Yeezy 350 Desert Sage",descripcion: "Adidas",
         fechaCarga:"03/04/2023",alt: "Zapatilla",
-        comentario: "Son reflectivas",imagen:"/images/JordanMocha.jpeg",
+        comentario: "Son reflectivas",imagen:"/../public/images/JordanMocha.jpeg",
         
     },
     {
-        id:7,
-        Nombre: "All Star",descripcion: "Converse",
+        nombre: "All Star",descripcion: "Converse",
         fechaCarga:"03/04/2023",alt: "Zapatilla",
-        comentario: "Que facheras que son", imagen:"/images/allStar.jpeg",
+        comentario: "Que facheras que son", imagen:"/../public/images/allStar.jpeg",
         
     },
 
     {   nombre: "Air Max 97" , descripcion: "Nike",
         fechaCarga:"03/04/2023",alt: "Zapatilla",
-        comentario: "Muy turras",imagen:"/images/airmax97.jpeg",
+        comentario: "Muy turras",imagen:"/../public/images/airmax97.jpeg",
         
     },
     {   nombre:"Yeezy Slides",descripcion: "Adidas",
         fechaCarga:"03/04/2023",alt: "Zapatilla",
-        comentario: "Es como pisar nubes",imagen:"/images/slides.jpeg",
+        comentario: "Es como pisar nubes",imagen:"/../public/images/slides.jpeg",
         
     },
-    {    nombre: "Old Skool",descripcion: "Vans",
+    {   nombre: "Old Skool",descripcion: "Vans",
         fechaCarga:"03/04/2023",alt: "Zapatilla",
-        comentario: "Tremendas",imagen:"/images/vans.jpeg",
+        comentario: "Tremendas",imagen:"/../public/images/vans.jpeg",
     }
 ],
 comentarios: [
