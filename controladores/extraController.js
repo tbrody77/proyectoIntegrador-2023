@@ -3,7 +3,7 @@ const index = require('../db/index')
 
 // Métodos
 const extraController = {
-  profileEdit: function(req, res,) {
+  profileEdit: function(req, res, ) {
     res.render('profile-edit', { title: 'Profile Edit' });
   },
   productAdd: function(req, res, next) {
