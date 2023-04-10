@@ -1,12 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var userController = require('../controladores/userController');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.render('login', { title: 'Login' });
-});
+router.get('/login', userController.login);
 
 module.exports = router;
-
-//se cambio de users a profile
-
