@@ -67,7 +67,62 @@ comentarios: [
 }
 users: [
     {
-        
-    }
+    email: 'tfontana@udesa.edu.ar',
+    username: 'Tofo',
+    foto: 'https://via.placeholder.com/101x99',
+    password: '1234',
+    fecha: '2003-06-01',
+    dni: '44642281',
+    posteos: 4,
+    seguidores: 50,
+    seguidos: 40
+    },
+
+    {
+        username: 'Tad',
+        email: 'talvarezdemalde@udesa.edu.ar',
+        password: 'Messi',
+        fecha: '2002-04-11',
+        dni: '94131379',
+        posteos: 8,
+        seguidores: 100,
+        seguidos: 50 
+    },
+
+    {
+        username: 'Tom',
+        email: 'tbrody@udesa.edu.ar',
+        password: 'Tom123',
+        fecha: '2002-12-7',
+        dni: '44289671',
+        posteos: 8,
+        seguidores: 200,
+        seguidos: 10 
+    },
+
+    {
+        username: 'MessiL',
+        email: 'lmessi@udesa.edu.ar',
+        password: 'LaScaloneta',
+        fecha: '1987-04-11',
+        dni: '37890012',
+        posteos: 4,
+        seguidores: 10000,
+        seguidos: 3 
+    },
+
+    {
+        username: 'laAraña',
+        email: 'jalvarez@udesa.edu.ar',
+        password: 'JuliCrack',
+        fecha: '1987-04-11',
+        dni: '44642281',
+        posteos: 8,
+        seguidores: 10000,
+        seguidos: 50     
+    },
 ]
 module.exports = data
+
+
+
