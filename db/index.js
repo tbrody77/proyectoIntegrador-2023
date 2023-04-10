@@ -65,5 +65,9 @@ comentarios: [
     {nombreUsuario: "Nico",textoComentario: "Dame mil", imagenPerfil: "/default-image.png"},
 ],
 }
-
+users: [
+    {
+        
+    }
+]
 module.exports = data
