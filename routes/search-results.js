@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
+const extraController = require('../controladores/extraController');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.render('search-results', { title: 'Search Results' });
-});
+
+router.get('/', extraController.searchResults);
 
 module.exports = router;
 
