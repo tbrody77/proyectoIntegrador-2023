@@ -9,7 +9,7 @@ const userController = {
     login: function(req, res, next) {
       res.render('login', { title: 'Login' });
     },
-    register: function(req, res, next) {
+    register: function(req, res, ) {
       res.render('register', { title: 'Register' });
     }
   }
