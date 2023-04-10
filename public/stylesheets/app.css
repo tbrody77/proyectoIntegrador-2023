@@ -154,11 +154,11 @@ hr {
 
 /*====== Banner ======*/
 .banner {
-  background-image: url(/../public/images/img-home-banner.jpg);
+  background-image: url(/../public/images/wallpaper.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  height: 100px;
+  height: 10px;
 }
 
 
@@ -485,7 +485,7 @@ textarea.form-input {
   }
 
   .banner {
-    height: 320px;
+    height: 10px;
   }
 
   .btn-toggle-navbar {
