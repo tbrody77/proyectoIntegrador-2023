@@ -41,7 +41,6 @@ deletedAT TIMESTAMP NULL,
 
 FKuserId INT UNSIGNED,
 FOREIGN KEY (FKuserId) REFERENCES usuarios(id),
-
 FKproducoId INT UNSIGNED,
 FOREIGN KEY (FKproducoId) REFERENCES productos(id)
 );
@@ -54,30 +53,30 @@ VALUES ('tfontana@udesa.edu.ar', 'Tofo', 'https://via.placeholder.com/101x99', '
 ('jalvarez@udesa.edu.ar', 'LaAraña', 'https://via.placeholder.com/101x99', 'JuliCrack', '2000-31-01', 40912301);
 
 
-INSERT INTO productos (nombre, descripcion, foto)
-VALUES ('Air Force 1', 'Nike', '/../public/images/airforce1.jpeg'), 
-('Forum Bad Bunny', 'Adidas', '/../public/images/BBforum.jpeg'), 
-('Jordan 1 Mocha', 'Nike', '/../public/images/JordanMocha.jpeg'), 
-('220', 'NewBalance', '/../public/images/newBalance2002.jpeg'), 
-('Dunk Low Panda', 'Nike', '/../public/images/panda.jpeg'), 
-('Yeezy 350 Desert Sage', 'Adidas', '/../public/images/JordanMocha.jpeg'), 
-('All Star', 'Converse', '/../public/images/allStar.jpeg'), 
-('Air Max 97', 'Nike', '/../public/images/airmax97.jpeg'), 
-('Yeezy Slides', 'Adidas', '/../public/images/slides.jpeg'), 
-('Old Skool', 'Vans', '/../public/images/vans.jpeg');
+INSERT INTO productos (nombre, descripcion, foto, FkuserId)
+VALUES ('Air Force 1', 'Nike', '/../public/images/airforce1.jpeg', 1), 
+('Forum Bad Bunny', 'Adidas', '/../public/images/BBforum.jpeg', 1), 
+('Jordan 1 Mocha', 'Nike', '/../public/images/JordanMocha.jpeg', 2), 
+('220', 'NewBalance', '/../public/images/newBalance2002.jpeg', 2), 
+('Dunk Low Panda', 'Nike', '/../public/images/panda.jpeg', 3), 
+('Yeezy 350 Desert Sage', 'Adidas', '/../public/images/JordanMocha.jpeg', 3), 
+('All Star', 'Converse', '/../public/images/allStar.jpeg', 4), 
+('Air Max 97', 'Nike', '/../public/images/airmax97.jpeg', 4), 
+('Yeezy Slides', 'Adidas', '/../public/images/slides.jpeg', 5), 
+('Old Skool', 'Vans', '/../public/images/vans.jpeg', 5);
 
 
 
-INSERT INTO comentarios (comentario)
-VALUES ('Tremendo Producto'),
- ('Historicas'),
- ('Excelente calidad!'), 
- ('Horribles'), 
- ('Me las compro si o si!'), 
- ('No me gustan nada jajajaja'), 
- ('Las quiero'), 
- ('Las necesito'), 
- ('Combinan con todo'), 
- ('Dame mil');
+INSERT INTO comentarios (comentario, FkuserId, FKproducoId)
+VALUES ('Tremendo Producto', 1, 2),
+ ('Historicas', 2, 1),
+ ('Excelente calidad!', 3, 4), 
+ ('Horribles', 4, 3), 
+ ('Me las compro si o si!', 5, 2), 
+ ('No me gustan nada jajajaja', 1, 3), 
+ ('Las quiero', 2, 5), 
+ ('Las necesito', 3, 1), 
+ ('Combinan con todo', 4, 5), 
+ ('Dame mil', 5, 4);
 
 
