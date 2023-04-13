@@ -27,8 +27,8 @@ createdAT TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 updatedAT TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 deletedAT TIMESTAMP NULL,
 
-FKuserId INT UNSIGNED,
-FOREIGN KEY (FKuserId) REFERENCES usuarios(id)
+userId INT UNSIGNED,
+FOREIGN KEY (userId) REFERENCES usuarios(id)
 );
 
 CREATE TABLE comentarios(
@@ -39,10 +39,10 @@ createdAT TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 updatedAT TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 deletedAT TIMESTAMP NULL,
 
-FKuserId INT UNSIGNED,
-FOREIGN KEY (FKuserId) REFERENCES usuarios(id),
-FKproducoId INT UNSIGNED,
-FOREIGN KEY (FKproducoId) REFERENCES productos(id)
+userId INT UNSIGNED,
+FOREIGN KEY (userId) REFERENCES usuarios(id),
+producoId INT UNSIGNED,
+FOREIGN KEY (producoId) REFERENCES productos(id)
 );
 
 INSERT INTO usuarios (email, username, foto, password, fechanacimiento, dni)
@@ -53,21 +53,21 @@ VALUES ('tfontana@udesa.edu.ar', 'Tofo', 'https://via.placeholder.com/101x99', '
 ('jalvarez@udesa.edu.ar', 'LaAraña', 'https://via.placeholder.com/101x99', 'JuliCrack', '2000-31-01', 40912301);
 
 
-INSERT INTO productos (nombre, descripcion, foto, FkuserId)
-VALUES ('Air Force 1', 'Nike', '/../public/images/airforce1.jpeg', 1), 
-('Forum Bad Bunny', 'Adidas', '/../public/images/BBforum.jpeg', 1), 
-('Jordan 1 Mocha', 'Nike', '/../public/images/JordanMocha.jpeg', 2), 
-('220', 'NewBalance', '/../public/images/newBalance2002.jpeg', 2), 
-('Dunk Low Panda', 'Nike', '/../public/images/panda.jpeg', 3), 
-('Yeezy 350 Desert Sage', 'Adidas', '/../public/images/JordanMocha.jpeg', 3), 
-('All Star', 'Converse', '/../public/images/allStar.jpeg', 4), 
-('Air Max 97', 'Nike', '/../public/images/airmax97.jpeg', 4), 
-('Yeezy Slides', 'Adidas', '/../public/images/slides.jpeg', 5), 
-('Old Skool', 'Vans', '/../public/images/vans.jpeg', 5);
+INSERT INTO productos (nombre, descripcion, foto, userId)
+VALUES ('Air Force 1', 'Nike', 'airforce1.jpeg', 1), 
+('Forum Bad Bunny', 'Adidas', 'BBforum.jpeg', 1), 
+('Jordan 1 Mocha', 'Nike', 'JordanMocha.jpeg', 2), 
+('220', 'NewBalance', 'newBalance2002.jpeg', 2), 
+('Dunk Low Panda', 'Nike', 'panda.jpeg', 3), 
+('Yeezy 350 Desert Sage', 'Adidas', 'JordanMocha.jpeg', 3), 
+('All Star', 'Converse', 'allStar.jpeg', 4), 
+('Air Max 97', 'Nike', 'airmax97.jpeg', 4), 
+('Yeezy Slides', 'Adidas', 'slides.jpeg', 5), 
+('Old Skool', 'Vans', 'vans.jpeg', 5);
 
 
 
-INSERT INTO comentarios (comentario, FkuserId, FKproducoId)
+INSERT INTO comentarios (comentario, userId, producoId)
 VALUES ('Tremendo Producto', 1, 2),
  ('Historicas', 2, 1),
  ('Excelente calidad!', 3, 4), 
