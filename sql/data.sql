@@ -1,4 +1,5 @@
 drop schema proyectoIntegrador;
+
 CREATE SCHEMA proyectoIntegrador;
 
 USE proyectoIntegrador;
