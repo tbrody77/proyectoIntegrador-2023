@@ -17,7 +17,7 @@ const data = {
         
     },
     {
-        id: "4", nombre: "220",descripcion: "Las 2002R de New Balance son una combinación entre comodidad, rendimiento y estilo para disfrutar de la máxima comodidad durante tu día a día.",
+        id: "4", nombre: "2002 R",descripcion: "Las 2002R de New Balance son una combinación entre comodidad, rendimiento y estilo para disfrutar de la máxima comodidad durante tu día a día.",
         fechaCarga:"03/04/2023",alt: "Zapatilla",
         comentario: "Combinan muy bien",categoria: "novedades", imagen:"/../public/images/newBalance2002.jpeg",
     },
