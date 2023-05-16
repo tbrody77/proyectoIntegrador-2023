@@ -11,7 +11,13 @@ const userController = {
     },
     register: function(req, res) {
       res.render('register', { title: 'Register' });
-    }
+    },
+    profile: function(req, res, ) {
+      res.render('profile', { title: 'Profile' });
+    },
+    profileEdit: function(req, res, ) {
+      res.render('profile-edit', { title: 'Profile Edit' });
+    },
   }
   
   

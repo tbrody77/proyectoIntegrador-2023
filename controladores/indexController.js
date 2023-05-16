@@ -24,6 +24,10 @@ const indexController={
             });
         res.render('index', { novedades: filterNovedades, masComentados: filterMasComentados});
     },
+    searchResults: function(req, res, next) {
+        res.render('search-results', { title: 'Search Results' });
+      },
+      
 }
 
 //Exportaciones

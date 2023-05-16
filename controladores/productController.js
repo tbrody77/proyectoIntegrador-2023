@@ -3,6 +3,9 @@ const index = require('../db/index')
 
 //Metodos
 const productController={
+   productAdd: function(req, res, next) {
+      res.render('productAdd', { title: 'Add Product' });
+    },
    index: function(req, res, next) {
     const productos = index.productos
     const comentarios = index.comentarios
