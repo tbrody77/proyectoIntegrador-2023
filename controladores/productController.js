@@ -1,5 +1,11 @@
 //Requires
-const index = require('../db/index')
+const index = require('../db/index');
+const db = require('../models');
+
+db.Producto.findAll()
+.then((resultados) => {
+
+});
 
 //Metodos
 const productController={
@@ -14,6 +20,7 @@ const productController={
     res.render('product', { producto: filterProductoID, comentarios});
       },
 }
+
 
 
 //Exportaciones
