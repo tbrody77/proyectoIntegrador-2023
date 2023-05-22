@@ -1,4 +1,5 @@
 //Requires
+const bcrypt = require('bcryptjs');
 const index = require('../db/index')
 
 //Metodos
@@ -18,9 +19,14 @@ const userController = {
     profileEdit: function(req, res, ) {
       res.render('profile-edit', { title: 'Profile Edit' });
     },
+
+    ingresar: (req, res)=> {
+      let encriptada= bcryptjs.hashSync('123', 12);
+      let check= bcryptjs.compareSync(req.body.password, encriptada);
+      res.render('profile', { title: 'Profile' });
+    },
   }
-  
-  
+
   // Exportaciones
   module.exports = userController;
   

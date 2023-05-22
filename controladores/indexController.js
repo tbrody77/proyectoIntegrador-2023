@@ -1,4 +1,5 @@
 //Requires
+const bcrypt = require('bcryptjs');
 const index = require('../db/index')
 
 //Metodos
