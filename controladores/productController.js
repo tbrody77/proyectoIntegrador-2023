@@ -1,7 +1,6 @@
 //Requires
-const bcrypt = require('bcryptjs');
-const index = require('../db/index');
-const db = require('../models');
+const bcryptjs = require('bcryptjs');
+const db = require('../database/models');
 
 db.Producto.findAll()
 .then((resultados) => {

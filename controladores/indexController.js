@@ -1,6 +1,7 @@
 //Requires
-const bcrypt = require('bcryptjs');
-const index = require('../db/index')
+const bcryptjs = require('bcryptjs');
+const db = require('../database/models');   
+
 
 //Metodos
 const indexController={
