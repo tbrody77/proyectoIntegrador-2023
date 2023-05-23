@@ -37,9 +37,8 @@ const Comentario = sequelize.define(alias, cols, config);
 Comentario.associate=function (models) {
     Comentario.belongsToMany(models.Usuario,{
     as: 'Usuario',
-    foreingKey: UserId
+    foreingKey: 'UserId'
 });
 }
-
 
 }

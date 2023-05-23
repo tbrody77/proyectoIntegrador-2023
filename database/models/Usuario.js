@@ -49,9 +49,6 @@ Usuario.associate=function (models) {
         as: 'producto',
         foreignKey: 'userId'
     });
-    Usuario.HasMany(models.Producto,{
-        as: 'Producto',
-        foreignKey: 'userId'
-    });
+    
 }
 }
