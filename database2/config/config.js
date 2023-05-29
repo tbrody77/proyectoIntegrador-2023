@@ -1,11 +1,10 @@
-{ 
+module.exports= {
   "development": {
-    "username": "messi",
+    "username": "root",
     "password": null,
-    "database": "db",
+    "database": "data.sql",
     "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases":false
+    "dialect": "mysql"
   },
   "test": {
     "username": "root",

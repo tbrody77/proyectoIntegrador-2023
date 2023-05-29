@@ -37,11 +37,36 @@ const userController = {
       res.redirect('/usuario');
     },
 
-    login:(req,res)=>{
-      res.render('login')
-    },
+profile: function (req,res){
+db.Usuario.findByPk(req.session.usuario.id, {
 
-    ingresar: (req, res)=> {
+  include: {
+  all: true,
+  nested: true
+} 
+})
+  .then((profile) => {
+  res.render('profile', {profile: profile});
+})
+},
+
+
+registrarUsuario: function(req,res) {
+db.Usuario.create({
+email: req.body.email,
+usuario: req.body.usuario,
+contraseña: req.body.contraseña,
+foto: req.file.filename,
+fecha: req.body.fecha,
+dni: req.body.dni
+})
+.then(()=>res.redirect('user/login'))
+.catch(error => console.log(error))
+},
+
+
+
+   login: (req, res)=> {
       let encriptada= bcryptjs.hashSync('123', 12);
       let check= bcryptjs.compareSync(req.body.password, encriptada);
       res.render('profile', { title: 'Profile' });
