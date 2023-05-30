@@ -1,6 +1,6 @@
 //Requires
 const bcryptjs = require('bcryptjs');
-const index = require('../database/models');
+const db = require('../database/models');
 const Usuario = db.Usuario;
 
 
@@ -26,15 +26,50 @@ const userController = {
       res.render('addUsuario');
     },
 
-    store:(req,res)=>{
-      let passEncriptada= bcryptjs.hashSync(req.body.password,12);
-      let Usario = {
-          name:req.body.name,
-          email:req.body.email,
-          password:passEncriptada
-      }
-      Usuario.create(Usuario);
-      res.redirect('/usuario');
+    store:(req,res) => {
+      let errors = {};
+
+      if (req.body.usuario == "") { 
+        errors.message = "El campo usuario esta vacio.";
+
+        res.locals.errors = errors;
+
+        res.render("register");
+      } else if (req.body.email == "") { 
+        errors.message = "El campo email esta vacio.";
+
+        res.locals.errors = errors;
+
+        res.render("register");
+      } else if (req.body.password == "") { 
+        errors.message = "El campo password esta vacio.";
+
+        res.locals.errors = errors;
+
+        res.render("register");
+        } else {
+          let criterio = {
+            where: [{ email: req.body.email }]
+          }
+          User.findAll(criterio)
+          .then(data => {
+            //agregamos una propiedad y le asignamos el valor correspondiente
+            errors.message = "El email ya existe!";
+            //Asignamos a locals.error el objeto errors 
+            res.locals.errors = errors;
+            //renderizamos la vista con el error
+            res.render("register");
+          }).catch(error => console.log(error))
+
+          let passEncriptada= bcryptjs.hashSync(req.body.password,12);
+          let Usario = {
+              name:req.body.name,
+              email:req.body.email,
+              password:passEncriptada
+          }
+          Usuario.create(Usuario);
+          res.redirect('/usuario');
+        }
     },
 
 profile: function (req,res){
