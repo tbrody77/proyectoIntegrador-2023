@@ -1,5 +1,5 @@
 //Requires
-const bcryptjs = require('bcryptjs');
+//const bcryptjs = require('bcryptjs');
 const db = require('../database/models');
 const Usuario = db.Usuario;
 
@@ -61,12 +61,12 @@ const userController = {
             res.render("register");
           }).catch(error => console.log(error))
 
-          let passEncriptada= bcryptjs.hashSync(req.body.password,12);
-          let Usario = {
-              name:req.body.name,
-              email:req.body.email,
-              password:passEncriptada
-          }
+       //   let passEncriptada= bcryptjs.hashSync(req.body.password,12);
+       //   let Usario = {
+       //       name:req.body.name,
+       //       email:req.body.email,
+       //       password:passEncriptada
+       //   }
           Usuario.create(Usuario);
           res.redirect('/usuario');
         }
@@ -101,11 +101,11 @@ dni: req.body.dni
 
 
 
-   login: (req, res)=> {
-      let encriptada= bcryptjs.hashSync('123', 12);
-      let check= bcryptjs.compareSync(req.body.password, encriptada);
-      res.render('profile', { title: 'Profile' });
-    }
+//   login: (req, res)=> {
+//      let encriptada= bcryptjs.hashSync('123', 12);
+//      let check= bcryptjs.compareSync(req.body.password, encriptada);
+//      res.render('profile', { title: 'Profile' });
+//    }
   }
 
   // Exportaciones
