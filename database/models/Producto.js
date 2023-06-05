@@ -47,6 +47,8 @@ const Producto = sequelize.define(alias, cols, config);
 //    as: 'Usuario',
 //    foreingKey: 'UserId'
 //        }),
+
+
 //Producto.hasMany(models.Comentario,{
 //    as: 'Comentario',
 //    foreingKey: 'productoId'

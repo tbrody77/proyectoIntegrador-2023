@@ -44,7 +44,7 @@ const Comentario = sequelize.define(alias, cols, config);
   //  foreingKey: 'UserId'
 //}),
 
-  //  Comentario.belongsToMany(models.Producto,{
+  //  Comentario.belongsTo(models.Producto,{
    // as: 'Producto',
   //  foreingKey: 'productoId'
 //})
