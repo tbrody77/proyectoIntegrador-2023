@@ -35,7 +35,7 @@ module.exports = function(sequelize, dataTypes) {
 
     }
 let config = {
-    tableName: 'productos'
+    tableName: 'productos', timestamps: true
 }
 
 const Producto = sequelize.define(alias, cols, config);
@@ -49,8 +49,8 @@ Producto.belongsTo(models.Usuario,{
         }),
 Producto.hasMany(models.Comentario,{
     as: 'Comentario',
-    foreingKey: 'productoId'
+    foreingKey: 'id'
     })
 }
-
+return Producto
 }

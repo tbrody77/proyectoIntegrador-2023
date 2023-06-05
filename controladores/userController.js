@@ -1,6 +1,7 @@
 //Requires
 const bcryptjs = require('bcryptjs');
 const index = require('../database/models');
+const db = require('../database/models')
 const Usuario = db.Usuario;
 
 

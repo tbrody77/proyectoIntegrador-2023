@@ -30,7 +30,7 @@ module.exports = function(sequelize, dataTypes) {
 
     }
 let config = {
-    tableName: 'comentarios'
+    tableName: 'comentarios', timestamps: true
 }
 
 
@@ -38,16 +38,16 @@ const Comentario = sequelize.define(alias, cols, config);
 
 Comentario.associate=function (models) {
 
-    Comentario.belongsToMany(models.Usuario,{
+    Comentario.belongsTo(models.Usuario,{
     as: 'Usuario',
     foreingKey: 'UserId'
 }),
 
-    Comentario.belongsToMany(models.Producto,{
+    Comentario.belongsTo(models.Producto,{
     as: 'Producto',
     foreingKey: 'productoId'
 })
 }
 
-
+return Comentario
 }
