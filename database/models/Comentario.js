@@ -29,25 +29,27 @@ module.exports = function(sequelize, dataTypes) {
         },
 
     }
+
+//
 let config = {
     tableName: 'comentarios', timestamps: true
 }
-
 
 const Comentario = sequelize.define(alias, cols, config);
 
 Comentario.associate=function (models) {
 
-    Comentario.belongsTo(models.Usuario,{
-    as: 'Usuario',
-    foreingKey: 'UserId'
+   Comentario.belongsToMany(models.Usuario,{
+  as: 'Usuario',
+   foreingKey: 'UserId'
 }),
 
-    Comentario.belongsTo(models.Producto,{
+   Comentario.belongsToMany(models.Producto,{
     as: 'Producto',
     foreingKey: 'productoId'
 })
 }
 
 return Comentario
+
 }

@@ -29,16 +29,19 @@
 			////////////////
 			</h2>-->
 
-			<form action="/user/profile" method="get" >
+			<form action="/user/profile" method="post" >
 				<input type="text" placeholder="usuario" name="user"> <br>
 				<input type="text" placeholder="email" name="email"> <br>
-				<input type="text" placeholder="contraseña" name="password"> <br>
+				<input type="password" placeholder="contraseña" name="password"> <br>
 				<input type="text" placeholder="dni" name="dni"> <br>
 				<input type="date" placeholder="fecha de nacimiento" name="fecha"> <br>
 				<input type="file" placeholder="insertar tu foto" name="photo"> <br>
 				<input type="submit" value="enviar" >
 			</form>
 
+			<% if (locals.errors) { %>
+				<p style="color:red"> <%= errors.message %></p>
+			<% } %>
 
 			<%- include('../partials/footer'); %>
 </body>

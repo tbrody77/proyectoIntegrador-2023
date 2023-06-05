@@ -1,7 +1,6 @@
 //Requires
 const bcryptjs = require('bcryptjs');
-const index = require('../database/models');
-const db = require('../database/models')
+const db = require('../database/models');
 const Usuario = db.Usuario;
 
 
@@ -27,22 +26,82 @@ const userController = {
       res.render('addUsuario');
     },
 
-    store:(req,res)=>{
-      let passEncriptada= bcryptjs.hashSync(req.body.password,12);
-      let Usario = {
-          name:req.body.name,
-          email:req.body.email,
-          password:passEncriptada
-      }
-      Usuario.create(Usuario);
-      res.redirect('/usuario');
+    store:(req,res) => {
+      let errors = {};
+
+      if (req.body.usuario == "") { 
+        errors.message = "El campo usuario esta vacio.";
+
+        res.locals.errors = errors;
+
+        res.render("register");
+      } else if (req.body.email == "") { 
+        errors.message = "El campo email esta vacio.";
+
+        res.locals.errors = errors;
+
+        res.render("register");
+      } else if (req.body.password == "") { 
+        errors.message = "El campo password esta vacio.";
+
+        res.locals.errors = errors;
+
+        res.render("register");
+        } else {
+          let criterio = {
+            where: [{ email: req.body.email }]
+          }
+          User.findAll(criterio)
+          .then(data => {
+            //agregamos una propiedad y le asignamos el valor correspondiente
+            errors.message = "El email ya existe!";
+            //Asignamos a locals.error el objeto errors 
+            res.locals.errors = errors;
+            //renderizamos la vista con el error
+            res.render("register");
+          }).catch(error => console.log(error))
+
+          let passEncriptada= bcryptjs.hashSync(req.body.password,12);
+          let Usario = {
+              name:req.body.name,
+              email:req.body.email,
+              password:passEncriptada
+          }
+          Usuario.create(Usuario);
+          res.redirect('/usuario');
+        }
     },
 
-    login:(req,res)=>{
-      res.render('login')
-    },
+profile: function (req,res){
+db.Usuario.findByPk(req.session.usuario.id, {
 
-    ingresar: (req, res)=> {
+  include: {
+  all: true,
+  nested: true
+} 
+})
+  .then((profile) => {
+  res.render('profile', {profile: profile});
+})
+},
+
+
+registrarUsuario: function(req,res) {
+db.Usuario.create({
+email: req.body.email,
+usuario: req.body.usuario,
+contraseña: req.body.contraseña,
+foto: req.file.filename,
+fecha: req.body.fecha,
+dni: req.body.dni
+})
+.then(()=>res.redirect('user/login'))
+.catch(error => console.log(error))
+},
+
+
+
+   login: (req, res)=> {
       let encriptada= bcryptjs.hashSync('123', 12);
       let check= bcryptjs.compareSync(req.body.password, encriptada);
       res.render('profile', { title: 'Profile' });
