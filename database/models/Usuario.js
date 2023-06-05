@@ -43,14 +43,14 @@ module.exports = function(sequelize, dataTypes) {
 let config = {
     tableName: 'usuarios', timestamps: true
 }
-const Usuario = sequelize.define(alias, cols, config);
+//const Usuario = sequelize.define(alias, cols, config);
 
-Usuario.associate=function (models) {
-    Usuario.hasMany(models.Producto,{
-        as: 'producto',
-        foreignKey: 'userId'
-    });
-}
-return Usuario
+//Usuario.associate=function (models) {
+  //  Usuario.hasMany(models.Producto,{
+    //    as: 'producto',
+      //  foreignKey: 'userId'
+   // });
+//}
+//return Usuario
 
 }
