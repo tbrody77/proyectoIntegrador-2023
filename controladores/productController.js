@@ -13,15 +13,24 @@ const productController={
       res.render('productAdd', { title: 'Add Product' });
     },
    index: function(req, res, next) {
-    const productos = index.productos
-    const comentarios = index.comentarios
-    const filterProductoID = productos.filter(producto => producto.id == req.params.id);
-       console.log(filterProductoID) 
+    const productos = []
+    
+    
     res.render('product', { producto: filterProductoID, comentarios});
-      },
+      }, 
+      detalleProducto : function(req,res,next){
+         const id = req.params.id
+         db.Producto.findByPk(id,{includes:'Comentario'})
+         .then(function(producto){
+            console.log(producto);
+            const comentarios = producto.getComentarios()
+            res.render('product',{
+            producto, comentarios}
+            )
+         })
+         
+      }
 }
-
-
 
 //Exportaciones
 module.exports = productController;

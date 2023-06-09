@@ -4,7 +4,7 @@ var router = express.Router();
 var productController = require ('../controladores/productController')
 
 /* GET users listing. */
-router.get('/:id?', productController.index);
+router.get('/:id', productController.detalleProducto);
 router.get('/productAdd', productController.productAdd);
 
 

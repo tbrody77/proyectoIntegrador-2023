@@ -68,7 +68,7 @@ VALUES ('Air Force 1', 'Nike', 'airforce1.jpeg', 1),
 
 
 
-INSERT INTO comentarios (comentario, userId, producoId)
+INSERT INTO comentarios (comentario, userId, productoId)
 VALUES ('Tremendo Producto', 1, 2),
  ('Historicas', 2, 1),
  ('Excelente calidad!', 3, 4), 

@@ -16,7 +16,7 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%=producto[0].nombre %></h2> 
+			<h2 class="products-title"><%=producto.nombre %></h2> 
 			<p class="product-detail-description">
 				<a href="/productEdit">Editar</a>
 			</p>
@@ -24,9 +24,9 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="<%=producto[0].imagen %>" alt="" class="product-detail-img">
+					<img src="<%=producto.imagen %>" alt="" class="product-detail-img">
 					<p class="product-detail-description">
-						<%=producto[0].descripcion %></p>
+						<%=producto.descripcion %></p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<%

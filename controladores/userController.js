@@ -51,7 +51,7 @@ const userController = {
           let criterio = {
             where: [{ email: req.body.email }]
           }
-          User.findAll(criterio)
+          Usuario.findAll(criterio)
           .then(data => {
             //agregamos una propiedad y le asignamos el valor correspondiente
             errors.message = "El email ya existe!";
@@ -73,7 +73,7 @@ const userController = {
     },
 
 profile: function (req,res){
-db.Usuario.findByPk(req.session.usuario.id, {
+db.Usuario.findByPk(req.session.userId, {
 
   include: {
   all: true,

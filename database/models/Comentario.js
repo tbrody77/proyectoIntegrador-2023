@@ -37,18 +37,10 @@ let config = {
 
 const Comentario = sequelize.define(alias, cols, config);
 
-//Comentario.associate=function (models) {
+Comentario.associate=function (models) {
 
-  // Comentario.belongsToMany(models.Usuario,{
- // as: 'Usuario',
-   //foreingKey: 'UserId'
-//}),
-
-  // Comentario.belongsToMany(models.Producto,{
-    //as: 'Producto',
-    //foreingKey: 'productoId'
-//})
-//}
+Comentario.belongsTo(models.Producto)
+}
 
 return Comentario
 
