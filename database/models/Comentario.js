@@ -26,7 +26,7 @@ module.exports = function(sequelize, dataTypes) {
 
         productoId: {
             type: dataTypes.INTEGER
-        },
+        }
 
     }
 
@@ -39,9 +39,15 @@ const Comentario = sequelize.define(alias, cols, config);
 
 Comentario.associate=function (models) {
 
-Comentario.belongsTo(models.Producto)
+Comentario.belongsTo(models.Producto,{ 
+    as:'comentarios',
+    foreingKey:'productoId',
+}),
+Comentario.belongsTo(models.Usuario,{
+    as:'usuarioComentario',
+    foreingKey:'userId'
+})
+
 }
-
 return Comentario
-
 }
