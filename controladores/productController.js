@@ -47,7 +47,7 @@ const productController={
       },
 }
 
-
+ 
 
 //Exportaciones
 module.exports = productController;
