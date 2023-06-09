@@ -1,5 +1,5 @@
 //Requires
-const bcryptjs = require('bcryptjs');
+//const bcryptjs = require('bcryptjs');
 const index = require('../db/index')
 const db = require('../database/models');   
 
