@@ -1,4 +1,4 @@
-drop schema proyectoIntegrador;
+DROP SCHEMA IF EXISTS proyectoIntegrador;
 
 CREATE SCHEMA proyectoIntegrador;
 
@@ -23,13 +23,12 @@ nombre VARCHAR(255) NOT NULL,
 descripcion VARCHAR(255) NOT NULL,
 foto VARCHAR(255) NOT NULL,
 
-
 createdAT TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
 updatedAT TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 deletedAT TIMESTAMP NULL,
 
-userId INT UNSIGNED,
-FOREIGN KEY (userId) REFERENCES usuarios(id)
+usuarioId INT UNSIGNED,
+FOREIGN KEY (usuarioId) REFERENCES usuarios(id)
 );
 
 CREATE TABLE comentarios(
@@ -40,22 +39,24 @@ createdAT TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 updatedAT TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 deletedAT TIMESTAMP NULL,
 
-userId INT UNSIGNED,
-FOREIGN KEY (userId) REFERENCES usuarios(id),
-producoId INT UNSIGNED,
-FOREIGN KEY (producoId) REFERENCES productos(id)
+usuarioId INT UNSIGNED,
+FOREIGN KEY (usuarioId) REFERENCES usuarios(id),
+productoId INT UNSIGNED,
+FOREIGN KEY (productoId) REFERENCES productos(id)
 );
 
-INSERT INTO usuarios (email, username, foto, password, fechanacimiento, dni)
-VALUES ('tfontana@udesa.edu.ar', 'Tofo', 'https://via.placeholder.com/101x99', '1234', '2003-06-01', 44642281),
+INSERT INTO usuarios (email, username, foto, password, fechanacimiento, dni) 
+VALUES
+('tfontana@udesa.edu.ar', 'Tofo', 'https://via.placeholder.com/101x99', '1234', '2003-06-01', 44642281),
 ('talvarezdemalde@udesa.edu.ar', 'Tad', 'https://via.placeholder.com/101x99', 'Messi', '2002-04-11', 94131379),
-('tbrody@udesa.edu.ar', 'Tom', 'https://via.placeholder.com/101x99', 'Tom123', '2002-12-7', 44289671),
+('tbrody@udesa.edu.ar', 'Tom', 'https://via.placeholder.com/101x99', 'Tom123', '2002-12-07', 44289671),
 ('lmessi@udesa.edu.ar', 'MessiL', 'https://via.placeholder.com/101x99', 'LaScaloneta', '1987-04-11', 37890012),
-('jalvarez@udesa.edu.ar', 'LaAraña', 'https://via.placeholder.com/101x99', 'JuliCrack', '2000-31-01', 40912301);
+('jalvarez@udesa.edu.ar', 'LaAraña', 'https://via.placeholder.com/101x99', 'JuliCrack', '2000-01-31', 40912301);
 
 
-INSERT INTO productos (nombre, descripcion, foto, userId)
-VALUES ('Air Force 1', 'Nike', 'airforce1.jpeg', 1), 
+INSERT INTO productos (nombre, descripcion, foto, usuarioId)
+VALUES 
+('Air Force 1', 'Nike', 'airforce1.jpeg', 1), 
 ('Forum Bad Bunny', 'Adidas', 'BBforum.jpeg', 1), 
 ('Jordan 1 Mocha', 'Nike', 'JordanMocha.jpeg', 2), 
 ('220', 'NewBalance', 'newBalance2002.jpeg', 2), 
@@ -68,8 +69,8 @@ VALUES ('Air Force 1', 'Nike', 'airforce1.jpeg', 1),
 
 
 
-INSERT INTO comentarios (comentario, userId, productoId)
-VALUES ('Tremendo Producto', 1, 2),
+INSERT INTO comentarios (comentario, usuarioId, productoId) VALUES
+ ('Tremendo Producto', 1, 2),
  ('Historicas', 2, 1),
  ('Excelente calidad!', 3, 4), 
  ('Horribles', 4, 3), 
@@ -79,5 +80,3 @@ VALUES ('Tremendo Producto', 1, 2),
  ('Las necesito', 3, 1), 
  ('Combinan con todo', 4, 5), 
  ('Dame mil', 5, 4);
-
-

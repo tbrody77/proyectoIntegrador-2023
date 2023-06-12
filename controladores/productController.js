@@ -45,8 +45,7 @@ const productController = {
     .then(function (producto) {
 
       console.log(producto.Comentarios);
-      res.render("product", {
-        producto,
+      res.render("product", {producto,
       });
     });
   },

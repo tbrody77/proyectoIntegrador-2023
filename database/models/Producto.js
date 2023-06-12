@@ -21,7 +21,6 @@ module.exports = function(sequelize, dataTypes) {
         foto: {
             type: dataTypes.STRING
         },
-
         
         createdAt: {
             type: dataTypes.DATE
