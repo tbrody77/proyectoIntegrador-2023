@@ -24,33 +24,29 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="<%=producto.imagen %>" alt="" class="product-detail-img">
+					<img src="<%=producto.imagen %>" alt="<%= producto.nombre %>" class="product-detail-img">
 					<p class="product-detail-description">
 						<%=producto.descripcion %></p>
 				</article>
 				<div class="col-12 col-lg-4">
+				
 					<%
 					console.log("comentarios", comentarios)
 					
 				%>
 					<section class="comments">
-						<%
-
-
-						comentarios.forEach((comentario) => {
-	%>
+						<%producto.Comentarios.forEach((comentario) => {	%>
 						<article>
-							<img src="../public/images/users/<%=comentario.imagenPerfil%>" alt="">
+							<img src="../public/images/users/<%=comentario.imagenPerfil%>" alt="avatar user">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="/user/profile"><%=comentario.nombreUsuario%></a> </strong>
+								<span> <%= comentario.Usuario.username %> </span>	
+								<strong> <a href="/user/profile <%= comentario.usuarioId%>"><%=comentario.nombreUsuario%></a> </strong>
 								<%=comentario.textoComentario%></p>
 							</div>
 						</article>
 						<% 
 					})
-
-
 						%>
 						
 
