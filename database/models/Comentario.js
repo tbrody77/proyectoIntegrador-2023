@@ -1,3 +1,4 @@
+const Producto = require('./Producto')
 module.exports = function(sequelize, dataTypes) {
     let alias = "Comentario";
 
@@ -43,5 +44,4 @@ Comentario.belongsTo(models.Producto)
 }
 
 return Comentario
-
 }
