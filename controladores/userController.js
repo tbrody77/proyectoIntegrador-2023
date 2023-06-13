@@ -1,5 +1,9 @@
 //Requires
 //const bcryptjs = require('bcryptjs');
+const bcryptjs = require('bcryptjs');
+const bcrypt = require('bcryptjs/dist/bcrypt');
+const { json } = require('express/lib/response');
+const app = require('../app');
 const db = require('../database/models');
 const Usuario = db.Usuario;
 
@@ -13,17 +17,13 @@ const userController = {
       res.render('login', { title: 'Login' });
     },
     register: function(req, res) {
-      res.render('register', { title: 'Register' });
+      res.render('register', { title: 'Register' });  
     },
     profile: function(req, res, ) {
       res.render('profile', { title: 'Profile' });
     },
     profileEdit: function(req, res, ) {
       res.render('profile-edit', { title: 'Profile Edit' });
-    },
-
-    add:function(req, res) {
-      res.render('addUsuario');
     },
 
     store:(req,res) => {
@@ -46,20 +46,34 @@ const userController = {
 
         res.locals.errors = errors;
 
-        res.render("register");
+        res.redirect("register");
         } else {
           let criterio = {
             where: [{ email: req.body.email }]
           }
-          Usuario.findAll(criterio)
+          Usuario.findOne(criterio)
           .then(data => {
-            //agregamos una propiedad y le asignamos el valor correspondiente
+            if (data === null){
+                //agregamos una propiedad y le asignamos el valor correspondiente
             errors.message = "El email ya existe!";
             //Asignamos a locals.error el objeto errors 
             res.locals.errors = errors;
             //renderizamos la vista con el error
             res.render("register");
-          }).catch(error => console.log(error))
+            } 
+            else{ 
+              const usuario = {
+                username: req.body.username, 
+                email: req.body.email,
+                password: bcryptjs.hashSync
+                (req.body.password),
+                foto: req.body.foto,
+                dni: req.body.dni,
+                fechanacimiento: req.body.fechanacimiento,
+              }
+              Usuario.create(usuario)
+             .then( usuario => {res.redirect('/login')})
+            }
 
        //   let passEncriptada= bcryptjs.hashSync(req.body.password,12);
        //   let Usario = {
@@ -67,9 +81,8 @@ const userController = {
        //       email:req.body.email,
        //       password:passEncriptada
        //   }
-          Usuario.create(Usuario);
-          res.redirect('/usuario');
-        }
+          
+        })}
     },
 
 profile: function (req,res){
@@ -85,28 +98,38 @@ db.Usuario.findByPk(req.session.userId, {
 })
 },
 
-
-registrarUsuario: function(req,res) {
-db.Usuario.create({
-email: req.body.email,
-usuario: req.body.usuario,
-contraseña: req.body.contraseña,
-foto: req.file.filename,
-fecha: req.body.fecha,
-dni: req.body.dni
+autenticate: function (req,res){
+const email = req.body.email
+const password = req.body.password
+db.Usuario.findOne({
+  email:email
 })
-.then(()=>res.redirect('user/login'))
-.catch(error => console.log(error))
+.then(function(usuario){
+  if (usuario === null){
+    return res.redirect('/login?error=usuarioNoEncontrado')
+  }
+if (bcryptjs.compareSync(password, usuario.password)){
+  req.session.usuario = usuario
+  app.locals = usuario
+  console.log(req.body.recordame)
+  if (req.body.recordame === "checkbox"){
+    res.cookie('sesión', JSON.stringify(usuario), { maxAge: 1000 * 60 * 5 });
+  }
+  return res.redirect('/')
+}  
+else{ 
+  return res.redirect('/login?error=usuarioNoEncontrado')
+}
+})
 },
 
-
-
-//   login: (req, res)=> {
-//      let encriptada= bcryptjs.hashSync('123', 12);
-//      let check= bcryptjs.compareSync(req.body.password, encriptada);
-//      res.render('profile', { title: 'Profile' });
-//    }
+logout: function(req,res){
+  if (req.session.usuario){
+    req.session.destroy()
+    res.clearCookie('usuario');
   }
-
+  res.redirect('/')
+}
+}
   // Exportaciones
   module.exports = userController

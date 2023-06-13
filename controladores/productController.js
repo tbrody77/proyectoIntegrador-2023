@@ -1,7 +1,8 @@
 //Requires
 //const bcryptjs = require('bcryptjs');
-const index = require("../db/index");
 const db = require("../database/models");
+const { searchResults } = require("./indexController");
+const Op = db.Sequelize.Op;
 
 //Metodos
 const productController = {
@@ -49,6 +50,21 @@ const productController = {
       });
     });
   },
+  buscar: function (req,res){
+     const consulta = req.query.consulta
+     db.Producto.findAll(
+      {where: {
+         nombre: {
+           [Op.like]: '%'+consulta+'%'
+         }
+       },
+      })
+      .then(productos => {
+         res.render('search-results', {productos
+         })
+      })
+  }
+
 };
 
 //Exportaciones
