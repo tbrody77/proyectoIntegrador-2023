@@ -47,12 +47,14 @@ const Usuario = sequelize.define(alias, cols, config);
 
 Usuario.associate=function (models) {
 
+
     Usuario.hasMany(models.Producto, { foreignKey: 'usuarioId' })
     
     Usuario.hasMany(models.Comentario,{
         as: 'Comentarios',
         foreignKey: 'usuarioId'
-    })
+    })}
     
+
+return Usuario
 }
-return Usuario}

@@ -43,7 +43,6 @@ let config = {
 const Producto = sequelize.define(alias, cols, config);
 
 
-
 Producto.associate=function (models) {
     Producto.belongsTo(models.Usuario) 
     Producto.hasMany(models.Comentario, {
@@ -52,5 +51,6 @@ Producto.associate=function (models) {
     })
     
 }
+cc01fa019745a8240a
 return Producto
 } 
