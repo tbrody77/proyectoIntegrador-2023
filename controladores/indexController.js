@@ -7,29 +7,17 @@ const db = require('../database/models');
 //Metodos
 const indexController={
    index: function(req, res, next) {
-    
-    let count=0;
-    let count2=0;
-    const productos = index.productos
-    const filterNovedades = productos.filter((producto) => {
-        if (count < 4 && producto.categoria == "novedades") {
-            count++;
-            return true;
-            }
-            return false;
-        });
-    const filterMasComentados = productos.filter((producto) => {
-            if (count2 < 4 && producto.categoria == "mas comentados") {
-                count2++;
-                return true;
-                }
-                return false;
-            });
-        res.render('index', { novedades: filterNovedades, masComentados: filterMasComentados});
+    db.Producto.findAll({
+        include: [{as: "Usuario", model: db.Usuario}], 
+        order: [["createdAt", "DESC"]], 
+        limit: 4, 
+    })
+    .then(productos => {
+        res.render('index', { novedades: productos});
+    })
+        
     },
-    searchResults: function(req, res, next) {
-        res.render('search-results', { title: 'Search Results' });
-      },
+    
       
 }
 

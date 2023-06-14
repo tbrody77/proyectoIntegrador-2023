@@ -20,7 +20,12 @@ const userController = {
       res.render('register', { title: 'Register' });  
     },
     profile: function(req, res, ) {
-      res.render('profile', { title: 'Profile' });
+      const id = req.params.id
+      Usuario.findByPk(id, {include: [{as: 'Productos', model: db.Producto, order: [["createdAt", "DESC"]]}, 'Comentarios']})
+      .then(usuario => {
+        res.render('profile', { title: 'Profile', usuario });
+      })
+      
     },
     profileEdit: function(req, res, ) {
       res.render('profile-edit', { title: 'Profile Edit' });
@@ -28,6 +33,7 @@ const userController = {
 
     store:(req,res) => {
       let errors = {};
+//metodo que almacena el usuario en la base de datos al enviar el formulario de registro
 
       if (req.body.usuario == "") { 
         errors.message = "El campo usuario esta vacio.";
@@ -65,7 +71,7 @@ const userController = {
               const usuario = {
                 username: req.body.username, 
                 email: req.body.email,
-                password: bcryptjs.hashSync
+                password: bcryptjs.hashSync //libreria para encriptar info x ej la contra, con hash lo paso a token
                 (req.body.password),
                 foto: req.body.foto,
                 dni: req.body.dni,
@@ -85,18 +91,7 @@ const userController = {
         })}
     },
 
-profile: function (req,res){
-db.Usuario.findByPk(req.session.userId, {
 
-  include: {
-  all: true,
-  nested: true
-} 
-})
-  .then((profile) => {
-  res.render('profile', {profile: profile});
-})
-},
 
 autenticate: function (req,res){
 const email = req.body.email
@@ -109,7 +104,7 @@ db.Usuario.findOne({
     return res.redirect('/login?error=usuarioNoEncontrado')
   }
 if (bcryptjs.compareSync(password, usuario.password)){
-  req.session.usuario = usuario
+  req.session.usuario = usuario 
   app.locals = usuario
   console.log(req.body.recordame)
   if (req.body.recordame === "checkbox"){

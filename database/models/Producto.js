@@ -51,6 +51,6 @@ Producto.associate=function (models) {
     })
     
 }
-cc01fa019745a8240a
+
 return Producto
 } 
