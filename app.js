@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const sessioninview = require('./middleware/session');
 
 var indexRouter = require('./routes/index');
 var userRouter = require('./routes/user');
@@ -15,6 +16,8 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.use('/', express.static('public')); //https://expressjs.com/es/starter/static-files.html
+app.use(sessioninview);
 
 //app.use(logger('dev'));
 app.use(express.json());

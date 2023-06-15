@@ -96,13 +96,17 @@ const userController = {
 autenticate: function (req,res){
 const email = req.body.email
 const password = req.body.password
-db.Usuario.findOne({
+//req.locals.errors = {}
+db.Usuario.findOne({ where: {
   email:email
+}
 })
 .then(function(usuario){
-  if (usuario === null){
-    return res.redirect('/login?error=usuarioNoEncontrado')
+  if (!usuario){
+    res.locals.errors.mensaje = 'usuario no encontrado'
+    return res.render('/login', {title: 'login'})
   }
+  
 if (bcryptjs.compareSync(password, usuario.password)){
   req.session.usuario = usuario 
   app.locals = usuario
@@ -113,7 +117,9 @@ if (bcryptjs.compareSync(password, usuario.password)){
   return res.redirect('/')
 }  
 else{ 
-  return res.redirect('/login?error=usuarioNoEncontrado')
+  console.log('password incorrecta')
+  res.locals.errors.mensaje = 'password incorrecto'
+    return res.render('/login', {title: 'login'})
 }
 })
 },

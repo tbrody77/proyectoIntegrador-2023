@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="../public/images/logo chico zapatilas prog.png" />
+	<link width="" rel="shortcut icon" href="/images/logo chico zapatilas prog.png" />
 
 	<title> SNEAKERWORLD</title>
 	<%- include('../partials/head-links'); %>
@@ -24,26 +24,26 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="<%=producto.imagen %>" alt="<%= producto.nombre %>" class="product-detail-img">
+					<img src="/images/<%=producto.foto %>" alt="<%= producto.nombre %>" class="product-detail-img">
 					<p class="product-detail-description">
 						<%=producto.descripcion %></p>
 				</article>
 				<div class="col-12 col-lg-4">
 				
-					
+
 					<section class="comments">
-						<%producto.Comentarios.forEach((comentario) => {	%>
+						<% for(let index = 0; index < producto.Comentarios.length; index++){ %>
 						<article>
-							<img src="../public/images/users/<%=comentario.imagenPerfil%>" alt="avatar user">
+							<img src="/images/users/<%=producto.Comentarios[index].Usuario.foto%>" alt="avatar user">
 							<div class="data">
 								<p class="user">
-								<span> <%= comentario.Usuario.username %> </span>	
-								<strong> <a href="/user/profile <%= comentario.usuarioId%>"><%=comentario.nombreUsuario%></a> </strong>
-								<%=comentario.textoComentario%></p>
+								<span> <%= producto.Comentarios[index].Usuario.username %> </span>	
+								<strong> <a href="/user/profile/<%= producto.Comentarios[index].usuarioId%>"><%=producto.Comentarios[index].nombreUsuario%></a> </strong>
+								<%=producto.Comentarios[index].textoComentario%></p>
 							</div>
 						</article>
 						<% 
-					})
+					}
 						%>
 						
 

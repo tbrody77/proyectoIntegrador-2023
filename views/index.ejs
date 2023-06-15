@@ -4,21 +4,21 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="../public/images/logo chico zapatilas prog.png" />
+	<link width="" rel="shortcut icon" href="/images/logo chico zapatilas prog.png" />
 	
 	<title> SNEAKERWORLD </title>
 	<%- include('../partials/head-links'); %>
 </head>
 <body>
-	<% if(locals.usuario !== undefined){ %>
-		<%-include('../partials/headerLogueado') %>
+	<% if(locals.usuario ){ %>
+		<%-include('../partials/headerLogueado'); %>
 	<% }else{ %>
 		<%- include('../partials/header'); %>
 	
 		<% } %>
 	<!-- Banner -->
 	<div class="banner">
-		<img src="../public/images/light-blue.jpg" alt="Banner de ofertas">
+		<img src="/images/light-blue.jpg" alt="Banner de ofertas">
 	</div>
 	<!-- /Banner -->
 
@@ -31,28 +31,28 @@
 			<!-- Show the "ultimos" products -->
 			<%
 
+			for(let index = 0; index < novedades.length; index++) {
 
-novedades.forEach((producto) => {
 	%> 
 
 	<div class="col-12 col-sm-6 col-lg-3">
 		<section class="product-box">
-			<a href="product/<%=producto.id %>">
+			<a href="product/<%=novedades[index].id %>">
 				<figure class="product-box_image">
-					<img src="<%=producto.imagen %>" alt="cafetera moulinex">
+					<img src="/images/<%=novedades[index].foto %>" alt="cafetera moulinex">
 				</figure>
 				<article class="product-box_data">
-					<h2><%= producto.nombre %></h2>
-					<p><%= producto.descripcion %></p>
-					<p><%= producto.Usuario.id %></p>
-					<p>usuario: <a href=<%= 'user/profile/' + producto.Usuario.id %>> <%= producto.Usuario.username %> </a> </p>
+					<h2><%= novedades[index].nombre %></h2>
+					<p><%= novedades[index].descripcion %></p>
+					<p><%= novedades[index].Usuario.id %></p>
+					<p>usuario: <a href=<%= 'user/profile/' + novedades[index].Usuario.id %>> <%= novedades[index].Usuario.username %> </a> </p>
 				</article>
 			</a>
 		</section>
 	</div>
 
 	<%
-});
+};
 %> 
 
 		</div>

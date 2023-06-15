@@ -30,8 +30,16 @@ const productController = {
   //})
   //}
 
-  productAdd: function (req, res, next) {
+  productForm: function (req, res, next) {
     res.render("productAdd", { title: "Add Product" });
+  },
+
+  productAdd: function (req, res, next) {
+    const nombre = req.body.nombre
+    const descripcion = req.body.descripcion
+    const foto = req.file.filename
+    console.log(foto)
+    res.send(foto)
   },
 
   index: function (req, res, next) {
@@ -42,26 +50,29 @@ const productController = {
 
   detalleProducto: function (req, res, next) {
     const id = req.params.id;
-    db.Producto.findByPk(id, { include: [{model:db.Comentario, as: 'Comentarios', include: ['Usuario']}] })
-    .then(function (producto) {
+    db.Producto.findByPk(id, { include: [{ model: db.Comentario, as: 'Comentarios', include: ['Usuario'] }] })
+      .then(function (producto) {
 
-      console.log(producto.Comentarios);
-      res.render("product", {producto,
+        console.log(producto.Comentarios);
+        res.render("product", {
+          producto,
+        });
       });
-    });
   },
-  buscar: function (req,res){
-     const consulta = req.query.consulta
-     db.Producto.findAll(
-      {where: {
-         nombre: {
-           [Op.like]: '%'+consulta+'%'
-         }
-       },
+  buscar: function (req, res) {
+    const consulta = req.query.consulta
+    db.Producto.findAll(
+      {
+        where: {
+          nombre: {
+            [Op.like]: '%' + consulta + '%'
+          }
+        },
       })
       .then(productos => {
-         res.render('search-results', {productos
-         })
+        res.render('search-results', {
+          productos
+        })
       })
   }
 
