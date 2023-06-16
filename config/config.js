@@ -3,7 +3,7 @@ module.exports = {
     development: {
         host: 'localhost',
         dialect: 'mysql',
-        password: 'root',
+       // password: 'root',
         database: 'proyectoIntegrador',
         username: 'root',
         port: 3306,
