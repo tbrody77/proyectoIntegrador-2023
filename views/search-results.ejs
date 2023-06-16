@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	<%- include('../partials/header'); %>
+	<%- include('../partials/mainHeader'); %>
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
@@ -21,8 +21,20 @@
 				<h2 class="products-title">Resultados de búsqueda</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i> Resultados de busqueda:
-			</h2>
+			<h2 class="col-12"> <i> Resultados de busqueda:</h2>
+			<% if (productos.length > 0) { %>
+				<% for( let index = 0; index < productos.length; index++ ) { %>
+					<div>
+						<h3><a href=<%= productos[index].id %> ><%= productos[index].nombre %></a></h3>
+						<p><%= productos[index].descripcion %></p>
+						<figure class="product-box_image">
+							<img src="<%= "/images/" + productos[index].foto %>" alt=<%= productos[index].nombre %>>
+						</figure>
+					</div>
+				<% } %>
+			<% } else { %>
+				<h3>No se encontraron resultados</h3>
+			<% } %>
 
 
 			<%- include('../partials/footer'); %>

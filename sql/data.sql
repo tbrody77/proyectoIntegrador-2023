@@ -47,11 +47,11 @@ FOREIGN KEY (productoId) REFERENCES productos(id)
 
 INSERT INTO usuarios (email, username, foto, password, fechanacimiento, dni) 
 VALUES
-('tfontana@udesa.edu.ar', 'Tofo', 'https://via.placeholder.com/101x99', '1234', '2003-06-01', 44642281),
-('talvarezdemalde@udesa.edu.ar', 'Tad', 'https://via.placeholder.com/101x99', 'Messi', '2002-04-11', 94131379),
-('tbrody@udesa.edu.ar', 'Tom', 'https://via.placeholder.com/101x99', 'Tom123', '2002-12-07', 44289671),
-('lmessi@udesa.edu.ar', 'MessiL', 'https://via.placeholder.com/101x99', 'LaScaloneta', '1987-04-11', 37890012),
-('jalvarez@udesa.edu.ar', 'LaAraña', 'https://via.placeholder.com/101x99', 'JuliCrack', '2000-01-31', 40912301);
+('tfontana@udesa.edu.ar', 'Tofo', 'default-image.png', '$2a$10$JEWsGRv5OPFADrLhpTcuBeihEDJbrEhBoT3wqHT/rlrOv6ZdQL6Eu', '2003-06-01', 44642281), /* password: 1234 */
+('talvarezdemalde@udesa.edu.ar', 'Tad', 'default-image.png', '$2a$10$PP99oAVUwmP2ZBS8f7TgiOgwl.8azp/ho.lleeYRcSPIWC7NbzwaO', '2002-04-11', 94131379), /* password: Messi */
+('tbrody@udesa.edu.ar', 'Tom', 'default-image.png', '$2a$10$i5dd8sYljWBA3KnIpxRFBu6cXJrVB6DkG0z.U9CK7MuhAAFWRTtoO', '2002-12-07', 44289671), /* password Tom123 */
+('lmessi@udesa.edu.ar', 'MessiL', 'default-image.png', '$2a$10$3rLU3JnvcZFs3z5fDvc4l.bkQbNR0lsNCBoBs.ZOeL4k1B6b0S5zu', '1987-04-11', 37890012), /* password: LaScaloneta */
+('jalvarez@udesa.edu.ar', 'LaAraña', 'default-image.png', '$2a$10$Km5m/n34LMgXQQmxF.jMJORbzTi3u6HZpg8.eqGKZQmw10Wim7Msi', '2000-01-31', 40912301); /* password: JuliCrack */
 
 
 INSERT INTO productos (nombre, descripcion, foto, usuarioId)

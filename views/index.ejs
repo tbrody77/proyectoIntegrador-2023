@@ -10,12 +10,7 @@
 	<%- include('../partials/head-links'); %>
 </head>
 <body>
-	<% if(locals.usuario ){ %>
-		<%-include('../partials/headerLogueado'); %>
-	<% }else{ %>
-		<%- include('../partials/header'); %>
-	
-		<% } %>
+	<%- include('../partials/mainHeader') %>
 	<!-- Banner -->
 	<div class="banner">
 		<img src="/images/light-blue.jpg" alt="Banner de ofertas">

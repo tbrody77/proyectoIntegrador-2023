@@ -29,12 +29,12 @@
 			////////////////
 			</h2>-->
 
-			<form action="/user/register" method="post" >
-				<input type="text" placeholder="usuario" name="usuario"> <br>
+			<form action="/user/register" method="post" enctype="multipart/form-data">
+				<input type="text" placeholder="usuario" name="username"> <br>
 				<input type="text" placeholder="email" name="email"> <br>
 				<input type="password" placeholder="contraseña" name="password"> <br>
 				<input type="text" placeholder="dni" name="dni"> <br>
-				<input type="date" placeholder="fecha de nacimiento" name="fecha"> <br>
+				<input type="date" placeholder="fecha de nacimiento" name="fechanacimiento"> <br>
 				<input type="file" placeholder="insertar tu foto" name="photo"> <br>
 				<input type="submit" value="enviar" >
 			</form>

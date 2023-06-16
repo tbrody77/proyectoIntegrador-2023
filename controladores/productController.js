@@ -1,35 +1,11 @@
 //Requires
 //const bcryptjs = require('bcryptjs');
 const db = require("../database/models");
-const { searchResults } = require("./indexController");
 const Op = db.Sequelize.Op;
 
 //Metodos
 const productController = {
-  //product: function (req, res){
-  //   db.Producto.findOne({
-  //      include: {
-  //         all: true,
-  //         nested: true
-  //      },
-  //      where: {id: req.params.id}
-  //   })
-  //   .then(Producto =>{
-  //      res.render('product', {producto:producto});
-  //   })
-  //},
-
-  //productAdd: function(req, res){
-  //   db.Producto.create({
-  //      UserId:req.session.usuario.id,
-  //      descripcion:req.body.product,
-  //      foto:req.file.filename
-  //   })
-  //.then(()=>{
-  //   res.redirect('/')
-  //})
-  //}
-
+  
   productForm: function (req, res, next) {
     res.render("productAdd", { title: "Add Product" });
   },
@@ -64,9 +40,10 @@ const productController = {
     db.Producto.findAll(
       {
         where: {
-          nombre: {
-            [Op.like]: '%' + consulta + '%'
-          }
+          [Op.or]: [
+            { nombre: { [Op.like]: `%${consulta}%` } },
+            { descripcion: { [Op.like]: `%${consulta}%` } }
+          ]
         },
       })
       .then(productos => {

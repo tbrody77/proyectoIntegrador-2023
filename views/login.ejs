@@ -36,7 +36,11 @@
             <input type="submit" value="enviar" ><br>
 			<input type="checkbox" name="recordame" value="checkbox" >Recordame<br>
         </form>
+		<% if (locals.errors) { %>
+			<p style="color:red"> <%= errors.message %></p>
+		<% } %>
 	</div>
+
 
 			<%- include('../partials/footer'); %>
 </body>
