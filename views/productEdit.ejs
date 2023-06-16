@@ -23,10 +23,12 @@
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12"> <i>
 				
-				<form action="/product/add" method="post" enctype="multipart/form-data">
-				<input type="file" placeholder="Foto del producto" name="imagen"> <br>
-				<input type="text" placeholder="Nombre del producto" name="nombre"> <br>
-				<textarea placeholder="Descripcion del producto" name="descripcion"></textarea> <br>
+				<form action="/product/edit/<%= producto.id %>" method="post" enctype="multipart/form-data">
+				<input type="file" placeholder="Foto del producto" name="imagen" > <br>
+				<input type="text" placeholder="Nombre del producto" name="nombre" value=<%= producto.nombre %>> <br>
+				<textarea placeholder="Descripcion del producto" name="descripcion">
+                    <%= producto.descripcion %>
+                </textarea> <br>
 				<input type="submit" value="subir" ><br>
 			</form>
 			</h2>

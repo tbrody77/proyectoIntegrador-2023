@@ -33,10 +33,10 @@
             </ul>
 
             <ul class="right-navbar">
-              <li><a href="/user/profile"> El Perfil de <%= locals.usuario.username %> <i class="fas fa-user"></i>
+              <li><a href=<%= "/user/profile/" + locals.usuario.id %>> El Perfil de <%= locals.usuario.username %> <i class="fas fa-user"></i>
                     </a>
                 </li>
-                <li><a href="/product/productAdd"> Publicar Producto <i class="fas fa-user"></i>
+                <li><a href="/product/add"> Publicar Producto <i class="fas fa-user"></i>
                 </a>
             </li>
                 <li>

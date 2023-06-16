@@ -2,13 +2,12 @@ const express = require('express');
 const createError = require('http-errors');
 const path = require('path');
 const logger = require('morgan');
-const sessioninview = require('./middleware/session');
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
 const productRouter = require('./routes/product');
-const persistirSesion = require('./middleware/persistirSesion')
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const userController = require('./controladores/userController');
 
 const app = express();
 
@@ -24,14 +23,14 @@ app.use(session({
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static('public')); //https://expressjs.com/es/starter/static-files.html
-app.use(sessioninview);
+app.use(userController.session);
 
-app.use(logger('dev'));
+// app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 
-app.use(persistirSesion)
+app.use(userController.persistirSesion)
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/product', productRouter);

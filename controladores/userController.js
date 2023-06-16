@@ -9,6 +9,20 @@ const Usuario = db.Usuario;
 
 //Metodos
 const userController = {
+  session: function(req, res, next) {
+    if(req.session && req.session.usuario){
+        res.locals.usuario = req.session.usuario
+    }
+    next()
+},
+
+persistirSesion: function (req, res, next) { 
+  if (req.cookies.usuario) {
+      req.session.usuario = JSON.parse(req.cookies.usuario)
+  } 
+  next()
+  },
+
   index: function (req, res, next) {
     res.render("user", { title: "User" });
   },
